@@ -23,5 +23,4 @@ Normally I would just consult with team/product owner/users on any of the below.
 - Also adding initial `price` to Flight.
 
 - Assuming discounts have atomic nature. They should only be applied in full or not all. Partial discounts do not apply if they break conditions. Discounts will be applied in order.
-
-- Assignment informs about static constraint that flight cannot be less than 20 euros. I am expanding on this idea to create a terminator entity that will break application of discounts and allow for condition to be changed more easily. 
+ 
