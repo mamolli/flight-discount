@@ -2,7 +2,7 @@
 
 In this repo you will find a showcase application (in Clojure) of rule based system for applying discounts to airline tickets. 
 
-More info on requirements and description in: ./assignment.md
+More info on requirements and description in: `./assignment.md`
 
 ## Dev run
 Dependencies:
