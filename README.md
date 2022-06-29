@@ -20,7 +20,7 @@ Normally I would just consult with team/product owner/users on any of the below.
 - Adding additional data to Flight - `departure`. Tenant/buyer is purchasing an actual flight and this flight must have a concrete departure(datetime). Departure cannot be inferred from: 
   >contains the ID, the route from, to, hour and days of the week of departure.
 
-- Also adding initial `price` to Flight.
+- Also adding initial `price` to Flight. (to see more about structures used go: `./src/discount/specs.clj/`)
 
 - Assuming discounts have atomic nature. They should only be applied in full or not all. Partial discounts do not apply if they break conditions. Discounts will be applied in order.
  
