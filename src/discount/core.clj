@@ -30,7 +30,7 @@
 
 ;; if booking price gets below 20 discount rules are no longer applied
 ;; order of rules becomes important, rules on top will be applied first
-;; this is why I moved birthday to first in rules, as it seems more personal discount
+;; this is why I moved birthday to first in rules, as it seems more a personal discount
 (defn skip-rule? [{:booking/keys [price]}]
   "Predicate function for not applying rule(s) to booking, returns true/false"
   (not (<= 20 price)))
