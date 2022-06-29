@@ -32,8 +32,8 @@
        (= rules-count (-> (:booking/rules booking) (count)))))
 
 
-;; I would make a proper matrix here {[:x :y] [price count-rules]} and run it all
-;; but working under limited time, so just hinting
+;; I would make a proper matrix here {[:x :y] [price count-rules]} and reduce it
+;; but working under limited time, so just hinting how to make it a little better
 (deftest basic
   (is (true? (-> (buy-flight (:africa-thursday-50 flights)
                              (:thursday-group-A   tenants)) 
