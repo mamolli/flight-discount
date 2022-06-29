@@ -55,7 +55,9 @@
                  (check-price+rules? 45 0))))
   (is (true? (-> (buy-flight (:europe-other-50 flights)
                              (:thursday-group-A   tenants)) 
-                 (check-price+rules? 50 0))))
+                 (check-price+rules? 50 0)))))
+
+(deftest helper
   ;; to also test if the helper function works correctly:
   (is (false? (-> (buy-flight (:europe-thursday-50 flights)
                               (:other-group-A   tenants)) 
