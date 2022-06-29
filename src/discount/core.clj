@@ -32,7 +32,7 @@
 ;; order of rules becomes important, rules on top will be applied first
 ;; this is why I moved birthday to first in rules, as it seems more personal discount
 (defn skip-rule? [{:booking/keys [price]}]
-  "Predicate function for not applying rule to booking, returns true/false"
+  "Predicate function for not applying rule(s) to booking, returns true/false"
   (not (<= 20 price)))
 
 (defn record-rules? [{:booking/keys [tenant]}]
