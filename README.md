@@ -22,5 +22,5 @@ Normally I would just consult with team/product owner/users on any of the below.
 
 - Also adding initial `price` to Flight. (to see more about structures used go: `./src/discount/specs.clj/`)
 
-- Assuming discounts have atomic nature. They should only be applied in full or not all. Partial discounts do not apply if they break conditions. Discounts will be applied in order.
+- Assuming discounts have atomic nature. They should only be applied in full or not all. Discounts do not apply partially. Discounts will be applied in order.
  
