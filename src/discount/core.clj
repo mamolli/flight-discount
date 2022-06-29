@@ -37,7 +37,7 @@
 
 (defn record-rules? [{:booking/keys [tenant]}]
   "Predicate function for not persisting applied rules/discounts, returns true/false"
-  (= (:tenant/group tenant) :A)) ;; group :A is a group that records rules applied
+  (= (:tenant/group tenant) :A)) ;; group :A is a group that allows recording of applied rules 
 
 (def reduce-booking-fn
   "Reducing function accumulator is booking and its reduced by sequence of rules
