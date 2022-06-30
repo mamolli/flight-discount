@@ -8,7 +8,7 @@ More info on requirements and description in: `./assignment.md`
 Dependencies:
   - Typical posix x86 environment: `macos/linux/WSL2(windows)`
   - Base dependency: `clojure 1.10.3`, you need to have `clj` binary available
-  - Run app (it will executed over one example and print before and after): `clj -M -m discount.core`
+  - Run app (it will execute over one example and print before and after): `clj -M -m discount.core`
   - Run test (covers a couple more cases): `clj -X:test`
 
 ## Derived Assumptions / Unclear
