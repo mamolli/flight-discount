@@ -7,7 +7,7 @@
 ;; go to specs.clj to see datashapes
 
 (defn ->rule
-  "Takes name, update-fn, predicate-fn and returns map representing rule.
+  "Takes name, predicate-fn, update-fn and returns map representing rule.
     predicate-fn: function that takes booking map 
       and returns true/false if the rule should match
     update-fn: function that takes booking map
@@ -40,8 +40,8 @@
   (= (:tenant/group tenant) :A)) ;; group :A is a group that allows recording of applied rules 
 
 (def reduce-booking-fn
-  "Reducing function accumulator is booking and its reduced by sequence of rules
-   return a reduced booking"
+  "Reducing function is booking accumulator 
+   and its reduced by sequence of rules, returns a discounted booking"
   (fn [booking {:rule/keys [name predicate-fn update-fn] :as rule}]
     (let [predicate? (predicate-fn booking) 
           booking*   (cond-> booking predicate? (update-fn))]
