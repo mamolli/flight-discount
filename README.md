@@ -13,7 +13,7 @@ Dependencies:
 
 ## Derived Assumptions / Unclear
 
-Normally I would just consult with team/product owner/users on any of the below. However here I have to just take a stand on couple of important issues below.
+Normally I would just consult with team/product owner/users. However here I have to just take a stand on couple of important issues below.
 
 - Assignment suggests entrypoint to look like `buyFlight(FlightId flightId, TenantId tenantId)`, I will diverge from this entrypoint to be more in tune with clojure `(buy-flight flight tennant)`. This function takes a flight and tennant maps (with complete data) rather than just id. The system could be easily adapted to the id case, by adding a small wrapping function over entrypoint that would fetch data from source using ids.
 
