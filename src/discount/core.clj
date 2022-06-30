@@ -19,7 +19,7 @@
    :rule/predicate-fn predicate-fn?
    :rule/update-fn update-fn})) 
 
-(def rules 
+(def rules
   [(->rule "Flight departs on tenants birthday" 
             booking/flight-departs-on-tenants-birthday?
             booking/decrease-price-by-5)
@@ -31,25 +31,27 @@
 ;; if booking price gets below 20 discount rules are no longer applied
 ;; order of rules becomes important, rules on top will be applied first
 ;; this is why I moved birthday to first in rules, as it seems a more personal discount
-(defn skip-rule? [{:booking/keys [price]}]
+(defn skip-rule?
   "Predicate function for not applying rule(s) to booking, returns true/false"
+  [{:booking/keys [price]}]
   (not (<= 20 price)))
 
-(defn record-rules? [{:booking/keys [tenant]}]
+(defn record-rules?
   "Predicate function for not persisting applied rules/discounts, returns true/false"
+  [{:booking/keys [tenant]}]
   (= (:tenant/group tenant) :A)) ;; group :A is a group that allows recording of applied rules 
 
-(def reduce-booking-fn
-  "Reducing function is booking accumulator 
-   and its reduced by sequence of rules, returns a discounted booking"
-  (fn [booking {:rule/keys [name predicate-fn update-fn] :as rule}]
-    (let [predicate? (predicate-fn booking) 
-          booking*   (cond-> booking predicate? (update-fn))]
-      (if (skip-rule? booking*) 
-        booking ;; we could (reduced booking) here, because we always decrease by 5 - but that might change
-        (if (record-rules? booking*) 
-          (cond-> booking* predicate? (update :booking/rules conj rule))
-          (assoc booking* :booking/rules nil))))))
+(defn reduce-booking-fn
+  "Reducing function takes booking as accumulator 
+   and a rule, returns a discounted booking"
+  [booking {:rule/keys [name predicate-fn update-fn] :as rule}]
+  (let [predicate? (predicate-fn booking) 
+        booking*   (cond-> booking predicate? (update-fn))]
+    (if (skip-rule? booking*) 
+      booking ;; we could (reduced booking) here, because we always decrease by 5 - but that might change
+      (if (record-rules? booking*) 
+        (cond-> booking* predicate? (update :booking/rules conj rule))
+        (assoc booking* :booking/rules nil)))))
 
 ;; extra arrity added for better testing capabilities (not used at the moment)
 (defn buy-flight 
